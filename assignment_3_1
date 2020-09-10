@@ -1,0 +1,92 @@
+#include <stdio.h>
+
+int cap = 10;
+int i, j, a,count, number[10];
+
+
+int minimum(){
+
+    printf("Minimum: %d\n", number[0]);
+}
+
+int maximum(){
+
+    printf("Maximum: %d\n", number[9]);
+}
+
+int sum(){
+    int tot = 0;
+    for(i = 0;i < cap;i++){
+
+        tot = tot + number[i];
+
+    }
+    printf("Sum: %d\n", tot);
+}
+
+float average(){
+    double sum = 0.0;
+    double c = 0.0;
+    for(i = 0;i < cap;i++){
+
+        sum = sum + number[i];
+        c++;
+    }
+    double avg = sum / c;
+    printf("Average: %f\n",avg );
+}
+
+float median(int number[] , int count)
+{
+    double median=0.0;
+
+    // hvis antall element er partall
+    if(cap%2 == 0) {
+        median = (number[(count - 1) / 2] + number[count / 2]) / 2.0;
+        // hvis antall element er oddetall
+    }else {
+        median = number[count / 2];
+    }
+    return median;
+}
+
+
+int main() {
+
+
+    printf("Enter the numbers \n");
+    for (i = 0; i < cap; ++i)
+        scanf("%d", &number[i]);
+        count++;
+
+    for (i = 0; i < cap; ++i)
+    {
+
+        for (j = i + 1; j < cap; ++j)
+        {
+
+            if (number[i] > number[j])
+            {
+
+                a =  number[i];
+                number[i] = number[j];
+                number[j] = a;
+
+            }
+
+        }
+
+    }
+    minimum();
+    maximum();
+    sum();
+    average();
+    printf("Sorted: ");
+    for (i = 0; i < cap; ++i)
+        printf("%d ", number[i]);
+    printf("\n");
+
+    printf("Median: %f \n", median(number,i));
+
+    return 0;
+}
